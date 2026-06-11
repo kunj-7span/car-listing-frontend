@@ -8,6 +8,7 @@ SahiCar is a used car listing platform. Users can browse a catalog of cars, appl
  
 ---
 
+--- 
 ## Tech Stack
  
 | Layer | Technology |
@@ -18,7 +19,5 @@ SahiCar is a used car listing platform. Users can browse a catalog of cars, appl
 | UI Components | Shadcn UI |
 | State Management | Zustand |
 | Icons | Lucide React |
- 
 
- 
 ---
