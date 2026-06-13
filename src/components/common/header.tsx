@@ -28,10 +28,12 @@ export function Header() {
                             src="/logo.png"
                             alt="SahiCar Logo"
                             width={120}
-                            height={35}
+                            height={40}
                             className="h-8 w-auto object-contain"
                             priority
                         />
+
+                        <span className="text-xl font-semibold">SahiCar</span>
                     </Link>
                 </div>
 
@@ -77,24 +79,18 @@ export function Header() {
                                             </h4>
                                             <ul className="flex flex-col gap-1">
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                            Petrol
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground" >
+                                                        Petrol
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                            Diesel
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                        Diesel
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                            Electric
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                        Electric
                                                     </NavigationMenuLink>
                                                 </li>
                                             </ul>
@@ -106,24 +102,18 @@ export function Header() {
                                             </h4>
                                             <ul className="flex flex-col gap-1">
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                            Hyundai
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                        Hyundai
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                            Tata
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                        Tata
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                            Honda
-                                                        </Link>
+                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                        Honda
                                                     </NavigationMenuLink>
                                                 </li>
                                             </ul>
@@ -133,11 +123,10 @@ export function Header() {
                             </NavigationMenuItem>
 
                             <NavigationMenuItem>
-                                <Link href="#">
-                                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                        Compare
-                                    </NavigationMenuLink>
-                                </Link>
+
+                                <NavigationMenuLink href="/compare" className={navigationMenuTriggerStyle()}>
+                                    Compare
+                                </NavigationMenuLink>
                             </NavigationMenuItem>
 
                             <NavigationMenuItem>
@@ -145,36 +134,31 @@ export function Header() {
                                 <NavigationMenuContent>
                                     <ul className="grid w-[400px] gap-3 p-4 md:grid-cols-2">
                                         <li className="row-span-3">
-                                            <NavigationMenuLink asChild>
-                                                <Link href="verified-inspection" className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-primary/50 to-primary p-6 no-underline outline-none focus:shadow-md">
-                                                    <ShieldCheck className="h-6 w-6 text-white" />
-                                                    <div className="mt-4 mb-2 text-lg font-medium text-white">
-                                                        Verified Inspection
-                                                    </div>
-                                                    <p className="text-sm leading-tight text-white/90">
-                                                        Every car goes through a 140+ point inspection process.
-                                                    </p>
-                                                </Link>
+                                            <NavigationMenuLink href="verified-inspection" className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-primary/50 to-primary p-6 no-underline outline-none focus:shadow-md">
+
+                                                <ShieldCheck className="h-6 w-6 text-white" />
+                                                <div className="mt-4 mb-2 text-lg font-medium text-white">
+                                                    Verified Inspection
+                                                </div>
+                                                <p className="text-sm leading-tight text-white/90">
+                                                    Every car goes through a 140+ point inspection process.
+                                                </p>
                                             </NavigationMenuLink>
                                         </li>
                                         <li>
-                                            <NavigationMenuLink asChild>
-                                                <Link href="financing" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                    <div className="text-sm font-semibold leading-none">Financing</div>
-                                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
-                                                        Instant approval & paperless custom EMIs.
-                                                    </p>
-                                                </Link>
+                                            <NavigationMenuLink href="financing" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                <div className="text-sm font-semibold leading-none">Financing</div>
+                                                <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
+                                                    Instant approval & paperless custom EMIs.
+                                                </p>
                                             </NavigationMenuLink>
                                         </li>
                                         <li>
-                                            <NavigationMenuLink asChild>
-                                                <Link href="rc-transfer" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                    <div className="text-sm font-semibold leading-none">RC Transfer</div>
-                                                    <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
-                                                        Complete documentation handled end-to-end.
-                                                    </p>
-                                                </Link>
+                                            <NavigationMenuLink href="rc-transfer" className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                <div className="text-sm font-semibold leading-none">RC Transfer</div>
+                                                <p className="line-clamp-2 text-xs leading-snug text-muted-foreground mt-1">
+                                                    Complete documentation handled end-to-end.
+                                                </p>
                                             </NavigationMenuLink>
                                         </li>
                                     </ul>
