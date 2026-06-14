@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Car as CarIcon } from "lucide-react";
@@ -7,23 +6,40 @@ import { CarCard } from "./car-card";
 import { Button } from "@/components/ui/button";
 import type { Car } from "@/types/car-types";
 import { CarCardSkeleton } from "./car-card-skeleton";
-
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { useCarStore } from "@/store/use-car-store";
 
 interface CarGridProps {
-  cars: Car[];
-  loading?: boolean;
+  cars: Car[]
+  loading?: boolean
+  hasMore?: boolean
+  onLoadMore?: () => void
 }
 
-export function CarGrid({ cars, loading = false }: CarGridProps) {
+export function CarGrid({
+  cars,
+  loading = false,
+  hasMore = false,
+  onLoadMore,
+}: CarGridProps) {
   const router = useRouter();
+  const resetFilters = useCarStore((s) => s.resetFilters);
+  const setSearch = useCarStore((s) => s.setSearch);
+
+  const { sentinelRef } = useInfiniteScroll(
+    onLoadMore ?? (() => { }),
+    hasMore
+  )
 
   const handleReset = () => {
+    resetFilters();
+    setSearch("");
     router.push("/cars");
   };
 
   if (loading) {
     return (
-      <section aria-label="Car listings" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-8">
+      <section aria-label="Car listings" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 py-8">
         {Array.from({ length: 12 }).map((_, index) => (
           <CarCardSkeleton key={index} />
         ))}
@@ -52,10 +68,31 @@ export function CarGrid({ cars, loading = false }: CarGridProps) {
   }
 
   return (
-    <section aria-label="Car listings" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-8">
-      {cars.map((car) => (
-        <CarCard key={car.id} car={car} />
-      ))}
-    </section>
+    <>
+      <section
+        aria-label="Car listings"
+        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 py-8"
+      >
+        {cars.map((car) => (
+          <CarCard key={car.id} car={car} />
+        ))}
+      </section>
+
+      <div
+        ref={sentinelRef}
+        className="h-4 w-full"
+        aria-hidden="true"
+      />
+
+      {hasMore && (
+        <div className="flex justify-center py-6">
+          <div className="flex items-center gap-2 text-xs text-zinc-400">
+            <div className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce [animation-delay:0ms]" />
+            <div className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce [animation-delay:150ms]" />
+            <div className="w-1 h-1 rounded-full bg-zinc-400 animate-bounce [animation-delay:300ms]" />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
