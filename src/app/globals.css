@@ -128,3 +128,19 @@
     @apply font-sans;
   }
 }
+
+[data-slot="slider-track"] {
+  @apply bg-zinc-200 h-1.5 rounded-full;
+}
+
+[data-slot="slider-range"] {
+  @apply bg-zinc-900 rounded-full;
+}
+
+[data-slot="slider-thumb"] {
+  @apply w-4 h-4 bg-white border-2 border-zinc-900
+    shadow-md rounded-full
+    hover:scale-110 transition-transform duration-150
+    focus-visible:outline-none focus-visible:ring-2
+    focus-visible:ring-zinc-900 focus-visible:ring-offset-2;
+}
