@@ -58,8 +58,6 @@ export function CarCard({ car }: CarCardProps) {
           priority={car.featured}
         />
 
-        <div className="absolute" />
-
         {car.badge && (
           <span
             className={`absolute top-3 left-3 z-10 text-[10px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-md border shadow-sm ${badgeStyles[car.badge]}`}
