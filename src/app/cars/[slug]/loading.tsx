@@ -23,10 +23,10 @@ export default function CarDetailLoading() {
 
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl p-4 shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)] space-y-3">
-              <Skeleton className="aspect-[16/9] w-full rounded-2xl" />
+              <Skeleton className="aspect-video w-full rounded-2xl" />
               <div className="grid grid-cols-4 gap-3">
                 {Array.from({ length: 4 }).map((_, i) => (
-                  <Skeleton key={i} className="aspect-[16/9] rounded-xl" />
+                  <Skeleton key={i} className="aspect-video rounded-xl" />
                 ))}
               </div>
             </div>

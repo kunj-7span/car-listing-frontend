@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -22,6 +23,7 @@ import type { Car } from "@/types/car-types";
 import { formatPrice, formatEMI, formatKm, getDiscount } from "@/lib/formatters";
 import { CarImageGallery } from "@/components/cars/CarImageGallery";
 import { CarCard } from "@/components/cars/car-card";
+import { ShareButton } from "@/components/cars/share-button";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -37,14 +39,54 @@ export async function generateStaticParams() {
   return cars.map((car) => ({ slug: car.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
-  const car = cars.find((c) => c.slug === slug);
-  if (!car) return {};
+export async function generateMetadata({
+  params
+}: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const car = cars.find((c) => c.slug === slug)
+
+  if (!car) return {}
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  const absoluteUrl = (path: string) => {
+    if (path.startsWith("http")) return path
+    const normalizedSite = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl
+    const normalizedPath = path.startsWith("/") ? path : `/${path}`
+    return `${normalizedSite}${normalizedPath}`
+  }
+
+  const title = `${car.brand} ${car.model} ${car.variant} ${car.year}`
+  const description =
+    `${car.year} ${car.brand} ${car.model} · ` +
+    `${car.fuelType} · ${car.transmission} · ` +
+    `${car.kmDriven.toLocaleString("en-IN")} km · ` +
+    `₹${(car.discountedPrice / 100000).toFixed(2)} L`
+
   return {
-    title: `${car.brand} ${car.model} ${car.variant} ${car.year} — SahiCar`,
-    description: car.description,
-  };
+    title: `${title} — SahiCar`,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: absoluteUrl(`/cars/${car.slug}`),
+      siteName: "SahiCar",
+      images: [
+        {
+          url: absoluteUrl(car.images[0]),
+          width: 1200,
+          height: 630,
+          alt: `${car.brand} ${car.model} ${car.variant}`,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [absoluteUrl(car.images[0])],
+    },
+  }
 }
 
 export default async function CarDetailPage({ params }: PageProps) {
@@ -243,6 +285,15 @@ export default async function CarDetailPage({ params }: PageProps) {
                   <button className="w-full py-3 rounded-2xl text-sm font-medium border border-zinc-200 text-zinc-700 hover:border-zinc-900 hover:text-zinc-900 hover:bg-zinc-50 transition-all duration-200">
                     Make an Offer
                   </button>
+                  <ShareButton
+                    carTitle={`${car.brand} ${car.model} ${car.variant}`}
+                    carSlug={car.slug}
+                    price={formatPrice(car.discountedPrice)}
+                    year={car.year}
+                    fuelType={car.fuelType}
+                    variant="full"
+                    className="w-full justify-center"
+                  />
                 </div>
               </div>
 

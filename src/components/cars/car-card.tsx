@@ -18,6 +18,8 @@ import {
 } from "@/lib/formatters";
 import type { Car } from "@/types/car-types";
 
+import { ShareButton } from "@/components/cars/share-button";
+
 interface CarCardProps {
   car: Car;
 }
@@ -129,14 +131,26 @@ export function CarCard({ car }: CarCardProps) {
 
         </div>
 
-        <button
-          className="mt-3 w-full py-2.5 rounded-2xl text-[13px] font-medium bg-zinc-50/80 backdrop-blur-sm border border-zinc-200/80 text-zinc-500 flex items-center justify-center gap-1.5 group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] group-hover:shadow-lg group-hover:shadow-zinc-900/20 transition-all duration-300 ease-out pointer-events-none select-none"
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-          View Details
-          <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
-        </button>
+        <div className="flex items-center gap-2 mt-3">
+          <button
+            className="flex-1 py-2.5 rounded-2xl text-[13px] font-medium bg-zinc-50/80 backdrop-blur-sm border border-zinc-200/80 text-zinc-500 flex items-center justify-center gap-1.5 group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] group-hover:shadow-lg group-hover:shadow-zinc-900/20 transition-all duration-300 ease-out pointer-events-none select-none"
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+            View Details
+            <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+          </button>
+
+          <ShareButton
+            carTitle={`${car.brand} ${car.model}`}
+            carSlug={car.slug}
+            price={formatPrice(car.discountedPrice)}
+            year={car.year}
+            fuelType={car.fuelType}
+            variant="icon"
+          />
+
+        </div>
 
         <div className="flex items-center gap-3 mt-3 pt-3 border-t border-zinc-100/80">
           {car.serviceHistory && (
