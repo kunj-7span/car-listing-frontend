@@ -168,11 +168,18 @@ export function Header() {
                     </NavigationMenu>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <Avatar>
-                        <AvatarImage src="https://github.com/kunj-pandya.png" />
-                        <AvatarFallback className="text-gray-900">PK</AvatarFallback>
-                    </Avatar>
+                <div className="flex items-center gap-3 group cursor-pointer p-1.5 px-3 rounded-full hover:bg-accent/50 transition-all duration-300">
+                    <div className="hidden sm:flex flex-col text-right">
+                        <span className="font-semibold text-xs sm:text-sm text-foreground/90 group-hover:text-primary transition-colors duration-200">Kunj Pandya</span>
+                        <span className="text-[10px] text-muted-foreground/80 font-medium">Frontend Developer</span>
+                    </div>
+                    <div className="relative">
+                        <Avatar className="h-9 w-9 border border-border/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm">
+                            <AvatarImage src="https://github.com/kunj-pandya.png" alt="Kunj Pandya" />
+                            <AvatarFallback className="text-gray-900 font-semibold text-xs">KP</AvatarFallback>
+                        </Avatar>
+                        <span className="absolute bottom-0 right-0 block h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-background" />
+                    </div>
                 </div>
             </div>
         </header>

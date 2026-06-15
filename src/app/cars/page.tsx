@@ -17,7 +17,7 @@ export default function CarsPage() {
   const { visibleCars, totalCount, hasMore } = useFilteredCars()
   const { filters, incrementPage, resetFilters } = useCarStore()
   useUrlFilters()
-  
+
   const [initialLoading, setInitialLoading] = useState(true)
   const [filterLoading, setFilterLoading] = useState(false)
   const prevFiltersRef = useRef(filters)
@@ -49,7 +49,7 @@ export default function CarsPage() {
   const isFiltered = activeCount > 0 || filters.search.trim() !== ""
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_#e8edf5_0%,_#f1f5f9_40%,_#f8fafc_100%)]">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#e8edf5_0%,#f1f5f9_40%,#f8fafc_100%)]">
       <section className="max-w-7xl mx-auto px-6 pt-10 pb-6">
         <p className="text-xs font-medium text-zinc-400 uppercase tracking-widest mb-2">
           Used Cars · Verified · Trusted
@@ -107,7 +107,7 @@ export default function CarsPage() {
           <CarSearch />
         </div>
 
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent mt-8" />
+        <div className="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent mt-8" />
       </section>
 
       <section className="max-w-7xl mx-auto px-6 pb-16">

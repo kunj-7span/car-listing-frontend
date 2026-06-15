@@ -117,7 +117,7 @@ export default async function CarDetailPage({ params }: PageProps) {
     .slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_#e8edf5_0%,_#f1f5f9_40%,_#f8fafc_100%)]">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#e8edf5_0%,#f1f5f9_40%,#f8fafc_100%)]">
       {/* Back navigation */}
       <div className="max-w-7xl mx-auto px-6 pt-8 pb-4">
         <Link
@@ -162,7 +162,7 @@ export default async function CarDetailPage({ params }: PageProps) {
 
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent my-5" />
+              <div className="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent my-5" />
 
               <div className="flex flex-wrap gap-4 text-sm text-zinc-500">
                 <span className="flex items-center gap-1.5">
@@ -245,7 +245,7 @@ export default async function CarDetailPage({ params }: PageProps) {
                   </p>
                 </div>
 
-                <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent my-4" />
+                <div className="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent my-4" />
 
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   {[
@@ -263,7 +263,7 @@ export default async function CarDetailPage({ params }: PageProps) {
                   ))}
                 </div>
 
-                <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent my-4" />
+                <div className="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent my-4" />
 
                 <div className="space-y-2 text-xs text-zinc-500">
                   <div className="flex items-center gap-2">
@@ -276,7 +276,7 @@ export default async function CarDetailPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent my-4" />
+                <div className="h-px bg-linear-to-r from-transparent via-zinc-200 to-transparent my-4" />
 
                 <div className="space-y-2">
                   <button className="w-full py-3 rounded-2xl text-sm font-semibold bg-zinc-900 text-white hover:bg-zinc-800 shadow-lg shadow-zinc-900/20 transition-all duration-200">

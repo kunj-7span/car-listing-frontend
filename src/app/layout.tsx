@@ -5,22 +5,25 @@ import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "SahiCar - Find the Right Car",
-  description: "Search, compare, and explore cars with confidence. SahiCar helps you find the right vehicle based on your needs and budget.",
+  title: {
+    default: "SahiCar — Buy Verified Used Cars in India",
+    template: "%s — SahiCar",
+  },
+  description:
+    "Browse verified used cars across India. Filter by brand, fuel, price and more. Trusted used car marketplace.",
+  keywords: [
+    "used cars", "second hand cars", "buy used cars india",
+    "verified used cars"
+  ],
+  openGraph: {
+    siteName: "SahiCar",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>
@@ -40,6 +43,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Toaster position="bottom-center" richColors />
         </TooltipProvider>
       </body>
     </html>
