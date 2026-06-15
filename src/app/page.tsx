@@ -19,7 +19,7 @@ export default function Home() {
     <main className="flex-1 flex flex-col justify-center">
       <section className="relative overflow-hidden bg-radial from-primary/10 via-background to-background py-20 sm:py-32">
         <div className="container mx-auto px-4 sm:px-6 text-center">
-          <Badge variant="outline" className="mb-4 bg-background border-primary/30 text-primary px-3 py-1 text-xs font-semibold">
+          <Badge variant="outline" className="mb-4 bg-background border-primary/30 text-primary px-4 py-4 text-xs font-semibold">
             Premium Used Cars
           </Badge>
           <h1 className="mx-auto max-w-4xl text-4xl font-extrabold tracking-tight sm:text-6xl text-foreground">
