@@ -6,7 +6,8 @@ import { CarCard } from "./car-card";
 import { Button } from "@/components/ui/button";
 import type { Car } from "@/types/car-types";
 import { CarCardSkeleton } from "./car-card-skeleton";
-import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { useCarStore } from "@/store/use-car-store";
 
 interface CarGridProps {
@@ -26,10 +27,15 @@ export function CarGrid({
   const resetFilters = useCarStore((s) => s.resetFilters);
   const setSearch = useCarStore((s) => s.setSearch);
 
-  const { sentinelRef } = useInfiniteScroll(
-    onLoadMore ?? (() => { }),
-    hasMore
-  )
+  const { ref: sentinelRef, inView } = useInView({
+    rootMargin: "400px",
+  });
+
+  useEffect(() => {
+    if (inView && hasMore && onLoadMore) {
+      onLoadMore();
+    }
+  }, [inView, hasMore, onLoadMore]);
 
   const handleReset = () => {
     resetFilters();
