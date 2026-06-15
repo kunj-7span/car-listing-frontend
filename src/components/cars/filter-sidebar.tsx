@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { useCarStore } from "@/store/use-car-store"
 import { formatPrice, formatKm } from "@/lib/formatters"
 import { getActiveFilterCount, FILTER_OPTIONS } from "@/lib/car-utils"
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 function FilterSection({
   title,
@@ -88,7 +89,7 @@ export function FilterContent() {
       </FilterSection>
 
       <FilterSection title="Brand">
-        <div className="max-h-36 sm:max-h-44 overflow-y-auto pr-1">
+        <ScrollArea className="h-36 sm:h-44 pr-3">
           {FILTER_OPTIONS.brands.map((brand) => (
             <div key={brand} className="flex items-center gap-2.5 py-1 sm:py-1.5">
               <Checkbox
@@ -105,7 +106,7 @@ export function FilterContent() {
               </Label>
             </div>
           ))}
-        </div>
+        </ScrollArea>
       </FilterSection>
 
       <FilterSection title="Fuel Type">
@@ -229,21 +230,25 @@ export function FilterSidebar() {
   const activeCount = getActiveFilterCount(filters)
 
   return (
-    <aside className="hidden lg:block w-72 shrink-0 bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.04)] p-5 sticky top-6 self-start max-h-[calc(100vh-3rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-200 scrollbar-track-transparent">
-      <div className="flex items-center justify-between mb-5">
-        <h2 className="text-sm font-semibold text-zinc-900">Filters</h2>
-        {activeCount > 0 && (
-          <button
-            onClick={resetFilters}
-            className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-900 transition-colors duration-200"
-          >
-            <X className="w-3 h-3" />
-            Reset ({activeCount})
-          </button>
-        )}
-      </div>
+    <aside className="hidden lg:block w-72 shrink-0 sticky top-6 self-start">
+      <ScrollArea className="h-[calc(100vh-4rem)] w-full bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.04)]">
+        <div className="p-5">
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-sm font-semibold text-zinc-900">Filters</h2>
+            {activeCount > 0 && (
+              <button
+                onClick={resetFilters}
+                className="flex items-center gap-1 text-xs text-zinc-500 hover:text-zinc-900 transition-colors duration-200"
+              >
+                <X className="w-3 h-3" />
+                Reset ({activeCount})
+              </button>
+            )}
+          </div>
 
-      <FilterContent />
+          <FilterContent />
+        </div>
+      </ScrollArea>
     </aside>
   )
 }
