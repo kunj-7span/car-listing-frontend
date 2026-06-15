@@ -4,6 +4,10 @@ A used car marketplace built for the Indian pre-owned car ecosystem. Browse, fil
 
 **Live Demo → [sahicar.vercel.app](https://sahicar.vercel.app)**
 
+**Video Walkthrough (long - 25 mins) → [Click to watch](https://www.loom.com/share/13149cf6a0ba4cd3bab6b314eaa1d9fc)**
+
+**Video Walkthrough (short - 5 mins) → [Click to watch](https://www.loom.com/share/4e7b16c3f0d74e5081029ac26c29317f)**
+
 ## Tech Stack
 
 | Technology | Purpose | Selection Rationale |
@@ -56,6 +60,57 @@ car-listing-frontend/
 └── package.json            # Target dependencies
 ```
 
+## Architecture Overview
+
+SahiCar follows a layered architecture where UI components remain focused on presentation, hooks coordinate application behavior, Zustand manages global state, and utility modules contain pure business logic.
+
+### Flow
+
+```text
+User Interaction
+       │
+       ▼
+React Components
+       │
+       ▼
+Custom Hooks
+       │
+       ▼
+Zustand Store
+       │
+       ▼
+Filtering / Sorting Utilities
+       │
+       ▼
+Rendered Car Results
+```
+
+### Rendering Strategy
+
+| Route | Strategy | Purpose |
+|---------|---------|---------|
+| `/cars` | CSR | Interactive filtering and sorting |
+| `/cars/[slug]` | SSG | SEO and fast page loads |
+| `/404` | Static | Error handling |
+
+### State Flow
+
+```text
+URL Parameters
+      ▲
+      │
+      ▼
+useUrlFilters
+      │
+      ▼
+Zustand Store
+      │
+      ▼
+useFilteredCars
+      │
+      ▼
+Car Grid
+```
 
 ## Key Decisions
  
