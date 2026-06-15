@@ -12,11 +12,7 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-    Avatar,
-    AvatarFallback,
-    AvatarImage,
-} from "@/components/ui/avatar";
+import { Button } from "../ui/button";
 
 export function Header() {
     return (
@@ -51,21 +47,21 @@ export function Header() {
                                             <ul className="flex flex-col gap-1">
                                                 <li>
                                                     <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                        <Link href="/cars?bodyType=SUV" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
                                                             SUVs
                                                         </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
                                                     <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                        <Link href="/cars?bodyType=Sedan" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
                                                             Sedans
                                                         </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
                                                     <NavigationMenuLink asChild>
-                                                        <Link href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                        <Link href="/cars?bodyType=Hatchback" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
                                                             Hatchbacks
                                                         </Link>
                                                     </NavigationMenuLink>
@@ -79,18 +75,24 @@ export function Header() {
                                             </h4>
                                             <ul className="flex flex-col gap-1">
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground" >
-                                                        Petrol
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?fuel=Petrol" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground" >
+                                                            Petrol
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                        Diesel
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?fuel=Diesel" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                            Diesel
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                                                        Electric
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?fuel=Electric" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                                                            Electric
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                             </ul>
@@ -102,18 +104,24 @@ export function Header() {
                                             </h4>
                                             <ul className="flex flex-col gap-1">
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                        Hyundai
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?brand=Hyundai" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                            Hyundai
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                        Tata
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?brand=Tata" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                            Tata
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                                 <li>
-                                                    <NavigationMenuLink href="#" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
-                                                        Honda
+                                                    <NavigationMenuLink asChild>
+                                                        <Link href="/cars?brand=Honda" className="block select-none rounded-md p-2 text-sm leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground font-medium text-primary">
+                                                            Honda
+                                                        </Link>
                                                     </NavigationMenuLink>
                                                 </li>
                                             </ul>
@@ -169,17 +177,9 @@ export function Header() {
                 </div>
 
                 <div className="flex items-center gap-3 group cursor-pointer p-1.5 px-3 rounded-full hover:bg-accent/50 transition-all duration-300">
-                    <div className="hidden sm:flex flex-col text-right">
-                        <span className="font-semibold text-xs sm:text-sm text-foreground/90 group-hover:text-primary transition-colors duration-200">Kunj Pandya</span>
-                        <span className="text-[10px] text-muted-foreground/80 font-medium">Frontend Developer</span>
-                    </div>
-                    <div className="relative">
-                        <Avatar className="h-9 w-9 border border-border/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm">
-                            <AvatarImage src="https://github.com/kunj-pandya.png" alt="Kunj Pandya" />
-                            <AvatarFallback className="text-gray-900 font-semibold text-xs">KP</AvatarFallback>
-                        </Avatar>
-                        <span className="absolute bottom-0 right-0 block h-2 w-2 rounded-full bg-emerald-500 ring-2 ring-background" />
-                    </div>
+                    <Link href="/cars">
+                        <Button>Browse Cars</Button>
+                    </Link>
                 </div>
             </div>
         </header>
