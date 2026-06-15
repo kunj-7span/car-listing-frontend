@@ -118,18 +118,8 @@ export default async function CarDetailPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#e8edf5_0%,#f1f5f9_40%,#f8fafc_100%)]">
-      {/* Back navigation */}
-      <div className="max-w-7xl mx-auto px-6 pt-8 pb-4">
-        <Link
-          href="/cars"
-          className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900 transition-colors duration-200 group"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
-          Back to listings
-        </Link>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-6 mb-6">
+      <div className="max-w-7xl mx-auto px-6 mb-6 pt-8">
         <p className="text-xs font-medium text-zinc-400 uppercase tracking-widest mb-1">
           {car.bodyType} · {car.fuelType} · {car.year}
         </p>

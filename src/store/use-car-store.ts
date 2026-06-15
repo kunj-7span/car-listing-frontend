@@ -19,6 +19,7 @@ interface CarStore {
   setSortBy: (v: SortOption) => void
   setPage: (v: number) => void
   incrementPage: () => void
+  setFilters: (v: Partial<FilterState>) => void
   resetFilters: () => void
 }
 
@@ -120,6 +121,12 @@ export const useCarStore = create<CarStore>((set) => ({
     set({ page: v }),
 
   incrementPage: () => set((s) => ({ page: s.page + 1 })),
+
+  setFilters: (v) =>
+    set((state) => ({
+      filters: { ...state.filters, ...v },
+      page: 1,
+    })),
 
   resetFilters: () =>
     set((state) => ({
