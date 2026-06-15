@@ -19,6 +19,7 @@ export function useUrlFilters() {
     toggleBrand, toggleFuelType,
     toggleTransmission, toggleBodyType, toggleOwnership,
     setPriceRange, setYearRange, setKmRange,
+    setFilters,
   } = useCarStore()
 
   useEffect(() => {
@@ -36,25 +37,49 @@ export function useUrlFilters() {
     const minKm = searchParams.get("minKm")
     const maxKm = searchParams.get("maxKm")
 
-    if (q) setSearch(q)
-    if (sort !== "relevance") setSortBy(sort as SortOption)
+    const nextPriceRange: [number, number] = minPrice && maxPrice 
+      ? [Number(minPrice), Number(maxPrice)] 
+      : PRICE_RANGE;
 
-    brands.forEach((b) => toggleBrand(b))
-    fuelTypes.forEach((f) => toggleFuelType(f))
-    transmissions.forEach((t) => toggleTransmission(t))
-    bodyTypes.forEach((b) => toggleBodyType(b))
-    ownerships.forEach((o) => toggleOwnership(o))
+    const nextYearRange: [number, number] = minYear && maxYear 
+      ? [Number(minYear), Number(maxYear)] 
+      : YEAR_RANGE;
 
-    if (minPrice && maxPrice) {
-      setPriceRange([Number(minPrice), Number(maxPrice)])
+    const nextKmRange: [number, number] = minKm && maxKm 
+      ? [Number(minKm), Number(maxKm)] 
+      : KM_RANGE;
+
+    // Check if store filters differ from URL params
+    const isDifferent = 
+      filters.search !== q ||
+      filters.sortBy !== sort ||
+      JSON.stringify(filters.brands) !== JSON.stringify(brands) ||
+      JSON.stringify(filters.fuelTypes) !== JSON.stringify(fuelTypes) ||
+      JSON.stringify(filters.transmissions) !== JSON.stringify(transmissions) ||
+      JSON.stringify(filters.bodyTypes) !== JSON.stringify(bodyTypes) ||
+      JSON.stringify(filters.ownerships) !== JSON.stringify(ownerships) ||
+      filters.priceRange[0] !== nextPriceRange[0] ||
+      filters.priceRange[1] !== nextPriceRange[1] ||
+      filters.yearRange[0] !== nextYearRange[0] ||
+      filters.yearRange[1] !== nextYearRange[1] ||
+      filters.kmRange[0] !== nextKmRange[0] ||
+      filters.kmRange[1] !== nextKmRange[1];
+
+    if (isDifferent) {
+      setFilters({
+        search: q,
+        sortBy: sort as SortOption,
+        brands,
+        fuelTypes,
+        transmissions,
+        bodyTypes,
+        ownerships,
+        priceRange: nextPriceRange,
+        yearRange: nextYearRange,
+        kmRange: nextKmRange,
+      })
     }
-    if (minYear && maxYear) {
-      setYearRange([Number(minYear), Number(maxYear)])
-    }
-    if (minKm && maxKm) {
-      setKmRange([Number(minKm), Number(maxKm)])
-    }
-  }, [])
+  }, [searchParams])
 
   useEffect(() => {
     const params = new URLSearchParams()
