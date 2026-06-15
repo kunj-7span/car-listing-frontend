@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export default function CarDetailLoading() {
   return (
-    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,_#e8edf5_0%,_#f1f5f9_40%,_#f8fafc_100%)]">
+    <main className="min-h-screen bg-[radial-gradient(ellipse_at_top,#e8edf5_0%,#f1f5f9_40%,#f8fafc_100%)]">
 
       <div className="max-w-7xl mx-auto px-6 pt-8 pb-4">
         <div className="inline-flex items-center gap-2 text-sm text-zinc-400">
