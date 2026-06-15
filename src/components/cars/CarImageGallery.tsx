@@ -20,7 +20,7 @@ export function CarImageGallery({ images, brand, model }: CarImageGalleryProps) 
   return (
     <div className="space-y-3">
 
-      <div className="relative w-full h-[420px] rounded-3xl overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-50 border border-white/80 shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]">
+      <div className="relative w-full h-[420px] rounded-3xl overflow-hidden bg-linear-to-br from-zinc-100 to-zinc-50 border border-white/80 shadow-[0_4px_24px_-2px_rgba(0,0,0,0.08)]">
         <Image
           src={images[activeIndex] || "/images/car-placeholder.png"}
           alt={`${brand} ${model} — view ${activeIndex + 1}`}
@@ -31,7 +31,7 @@ export function CarImageGallery({ images, brand, model }: CarImageGalleryProps) 
           onError={handleImageError}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/5 to-transparent pointer-events-none" />
 
         <div className="absolute bottom-4 right-4 bg-black/40 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">
           {activeIndex + 1} / {images.length}
@@ -67,8 +67,8 @@ export function CarImageGallery({ images, brand, model }: CarImageGalleryProps) 
               onClick={() => setActiveIndex(i)}
               aria-label={`View image ${i + 1}`}
               className={`relative shrink-0 w-20 h-14 rounded-xl overflow-hidden border-2 transition-all duration-200 ${activeIndex === i
-                  ? "border-zinc-900 shadow-md"
-                  : "border-transparent opacity-60 hover:opacity-100"
+                ? "border-zinc-900 shadow-md"
+                : "border-transparent opacity-60 hover:opacity-100"
                 }`}
             >
               <Image
